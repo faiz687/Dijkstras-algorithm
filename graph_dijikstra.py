@@ -29,7 +29,16 @@ class Dijikstra_graphs:
       for edge in self.graph[vertex]:
           print("vertex {} is linked to {} with weight of {}".format(vertex,edge,self.graph[vertex][edge]))
           
-
+  def shortest_path(self):
+    visited_vertex =     []
+    unvisited_vertexes =  list(self.graph.keys())
+    loop = 0 
+    while len(unvisited_vertexes) != 0:
+      unvisited = unvisited_vertexes.pop(0)
+      if 
+      
+    
+ 
 
     
 node_dictionary = {
@@ -43,6 +52,7 @@ node_dictionary = {
 
 
 graph = Dijikstra_graphs(node_dictionary)
+graph.shortest_path()
 #print(graph.add_vertex(5))
 #print(graph.add_edge_weight([5,4,5]))
 #graph.print_graph()
