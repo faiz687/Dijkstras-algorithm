@@ -30,17 +30,34 @@ class Dijikstra_graphs:
           print("vertex {} is linked to {} with weight of {}".format(vertex,edge,self.graph[vertex][edge]))
           
   def shortest_path(self):
-    visited_vertex =     []
-    unvisited_vertexes =  list(self.graph.keys())
-    loop = 0 
+    import math
+    unvisited_vertexes   =        list(self.graph.keys())
+    shortest_ditsance    =       [float('inf')]*len(unvisited_vertexes)
+    shortest_ditsance[0] =       0
+    loop_counter = 0
     while len(unvisited_vertexes) != 0:
-      unvisited = unvisited_vertexes.pop(0)
-      if 
+      vertex = shortest_ditsance.index(min(shortest_ditsance))
+      print("this is the vertex {}".format(vertex))
+      for edges in self.graph[vertex+1]:
+        weight =  self.graph[vertex+1][edges]
+        totalweight  =  weight + min(shortest_ditsance)
+        if totalweight < shortest_ditsance[edges-1]:
+          print(totalweight,edges,shortest_ditsance[edges-1])
+          shortest_ditsance[edges-1] = totalweight
+      print(unvisited_vertexes)
+      print(shortest_ditsance)
+      unvisited_vertexes.pop(0)
+      if  loop_counter == 0:
+        loop_counter += 1
+        shortest_ditsance.pop(0)
+        print("fffffff",shortest_ditsance)
+               
       
-    
- 
+      
+      
+      
+      
 
-    
 node_dictionary = {
                      1:{2:1,3:6},
                      2:{1:1,3:2,4:1},
