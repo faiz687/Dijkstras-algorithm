@@ -34,17 +34,18 @@ class Dijikstra_graphs:
     unvisited_vertexes  = list(self.graph.keys())
     known_path          = {}
     visited_vertex   =  [] 
-    starting_vertex  = 3 #random.choice(unvisited_vertexes)    
+    starting_vertex  =  random.choice(unvisited_vertexes)    
     for keys in unvisited_vertexes:
       known_path[keys] = float('inf')
       if keys == starting_vertex:
-        known_path[keys] = 0 
+        known_path[keys] = 0
+    print("Our Source Vertex is {}".format(starting_vertex))
     while len(unvisited_vertexes) != 0:
-      min_value_dictionary = known_path
-      for key in min_value_dictionary:
-        if key not in unvisited_vertexes:
+      min_value_dictionary = known_path.copy()
+      for key in list(min_value_dictionary):
+        if key in visited_vertex:
           del min_value_dictionary[key]
-      vertex =  min(known_path, key = known_path.get)   
+      vertex =  min(min_value_dictionary, key = min_value_dictionary.get) 
       if vertex in unvisited_vertexes:
         for edges in self.graph[vertex]:
           totalweight = known_path[vertex] + self.graph[vertex][edges]
@@ -52,7 +53,13 @@ class Dijikstra_graphs:
             known_path[edges] = totalweight  
       visited_vertex.append(vertex)
       unvisited_vertexes.remove(vertex)
-      input("")
+    for vertex in known_path:
+      print("{} is connected to {} by shortest diatnce of {}".format(starting_vertex,vertex,known_path[vertex]))
+    return known_path
+      
+      
+      
+      
       
     
       
