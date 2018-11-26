@@ -30,29 +30,31 @@ class Dijikstra_graphs:
           print("vertex {} is linked to {} with weight of {}".format(vertex,edge,self.graph[vertex][edge]))
           
   def shortest_path(self):
-    import math
-    unvisited_vertexes   =        list(self.graph.keys())
-    shortest_ditsance    =       [float('inf')]*len(unvisited_vertexes)
-    shortest_ditsance[0] =       0
-    loop_counter = 0
+    import math , random
+    unvisited_vertexes  = list(self.graph.keys())
+    known_path          = {}
+    visited_vertex   =  [] 
+    starting_vertex  = 3 #random.choice(unvisited_vertexes)    
+    for keys in unvisited_vertexes:
+      known_path[keys] = float('inf')
+      if keys == starting_vertex:
+        known_path[keys] = 0 
     while len(unvisited_vertexes) != 0:
-      vertex = shortest_ditsance.index(min(shortest_ditsance))
-      print("this is the vertex {}".format(vertex))
-      for edges in self.graph[vertex+1]:
-        weight =  self.graph[vertex+1][edges]
-        totalweight  =  weight + min(shortest_ditsance)
-        if totalweight < shortest_ditsance[edges-1]:
-          print(totalweight,edges,shortest_ditsance[edges-1])
-          shortest_ditsance[edges-1] = totalweight
-      print(unvisited_vertexes)
-      print(shortest_ditsance)
-      unvisited_vertexes.pop(0)
-      if  loop_counter == 0:
-        loop_counter += 1
-        shortest_ditsance.pop(0)
-        print("fffffff",shortest_ditsance)
-               
+      min_value_dictionary = known_path
+      for key in min_value_dictionary:
+        if key not in unvisited_vertexes:
+          del min_value_dictionary[key]
+      vertex =  min(known_path, key = known_path.get)   
+      if vertex in unvisited_vertexes:
+        for edges in self.graph[vertex]:
+          totalweight = known_path[vertex] + self.graph[vertex][edges]
+          if totalweight < known_path[edges]:
+            known_path[edges] = totalweight  
+      visited_vertex.append(vertex)
+      unvisited_vertexes.remove(vertex)
+      input("")
       
+    
       
       
       
