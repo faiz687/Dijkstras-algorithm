@@ -8,6 +8,7 @@ class Dijikstra_graphs:
       return 'Empty dictionary initiated'
       
   def add_vertex(self,new_vertex):
+    """function to add vertex"""
     if new_vertex in self.graph:
       return 'vertex alrerady present in graph'
     if new_vertex not in self.graph:
@@ -15,6 +16,7 @@ class Dijikstra_graphs:
       return 'Vertex Added to graph'
   
   def add_edge_weight(self,edge_weight):
+      """function to add edge and weight to the graph"""
     if edge_weight[0] in self.graph:
       self.graph[edge_weight[0]][edge_weight[1]] = edge_weight[2]
       return 'Edge and weight added to Vertex'
@@ -22,11 +24,14 @@ class Dijikstra_graphs:
       return 'Vertex not present in graph'
     
   def print_graph(self):
+    """ function to print the graph with vertex , weight , and edges""""
     for vertex in self.graph:
       for edge in self.graph[vertex]:
           print("vertex {} is linked to {} with weight of {}".format(vertex,edge,self.graph[vertex][edge]))
           
   def shortest_path(self):
+    """ function implementing dijkstra algorithm - selects a random source 
+    vertex and returns the shortest distance from it to all """
     import math , random
     unvisited_vertexes  = list(self.graph.keys())
     known_path       = {}

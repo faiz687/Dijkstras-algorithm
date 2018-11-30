@@ -38,9 +38,5 @@ class Dijikstra_graphs_testing(unittest.TestCase):
     self.assertNotEqual(shortest_path,shortest_path)
     
       
-    
-    
-
-    
 if __name__ == '__main__':
   unittest.main()      
