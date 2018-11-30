@@ -13,14 +13,11 @@ class Dijikstra_graphs:
     if new_vertex not in self.graph:
       self.graph[new_vertex] = {}
       return 'Vertex Added to graph'
-    
-
-      
+  
   def add_edge_weight(self,edge_weight):
     if edge_weight[0] in self.graph:
       self.graph[edge_weight[0]][edge_weight[1]] = edge_weight[2]
-      return 'Edge added to Vertex'
-      
+      return 'Edge and weight added to Vertex'
     else:
       return 'Vertex not present in graph'
     
@@ -32,7 +29,7 @@ class Dijikstra_graphs:
   def shortest_path(self):
     import math , random
     unvisited_vertexes  = list(self.graph.keys())
-    known_path          = {}
+    known_path       = {}
     visited_vertex   =  [] 
     starting_vertex  =  random.choice(unvisited_vertexes)    
     for keys in unvisited_vertexes:
@@ -56,31 +53,18 @@ class Dijikstra_graphs:
     for vertex in known_path:
       print("{} is connected to {} by shortest diatnce of {}".format(starting_vertex,vertex,known_path[vertex]))
     return known_path
-      
-      
-      
-      
-      
-    
-      
-      
-      
-      
-
-node_dictionary = {
+  
+graph_weighted_dictionary = {
                      1:{2:1,3:6},
                      2:{1:1,3:2,4:1},
                      3:{1:6,2:2,4:2,5:5},
                      4:{2:1,3:2,5:5},
                      5:{3:5,4:5}
                   }  
-
-
-
-graph = Dijikstra_graphs(node_dictionary)
-graph.shortest_path()
-#print(graph.add_vertex(5))
-#print(graph.add_edge_weight([5,4,5]))
+graph = Dijikstra_graphs(graph_weighted_dictionary)
+#graph.shortest_path()
+print(graph.add_vertex(6))
+print(graph.add_edge_weight([6,4,5]))
 #graph.print_graph()
 
 
